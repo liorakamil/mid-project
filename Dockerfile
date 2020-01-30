@@ -1,7 +1,7 @@
-from alpine:latest
+FROM alpine:latest
 
-RUN apk update
-RUN apk add  python3 
+RUN apk update && \
+    apk add  python3 
 
 COPY ./requirements.txt /app/requirements.txt
 
@@ -14,3 +14,5 @@ COPY . /app
 ENTRYPOINT [ "python3" ]
 
 CMD [ "app.py" ]
+
+EXPOSE 80 443
