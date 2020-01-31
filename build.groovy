@@ -13,9 +13,11 @@ node {
   sh "docker images"
  }
  stage('Apply Kubernetes files') {
-     sh """
-     aws eks update-kubeconfig --region us-east-1 --name opsSchool-eks-rC0FPoaR
-     kubectl apply -f deploy.yml
-     """
+    withAWS(region: 'us-east-1', credentials: 'AWSK8S') {
+        sh """
+        aws eks update-kubeconfig --name opsSchool-eks-rC0FPoaR
+        kubectl apply -f deploy.yml
+        """
+    }
   }
 }
