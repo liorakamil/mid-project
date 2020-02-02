@@ -15,7 +15,7 @@ node {
  stage('Apply Kubernetes files') {
     withAWS(region: 'us-east-1', credentials: 'AWSK8S') {
         sh """
-        aws eks update-kubeconfig --opsSchool-eks-AJKBMhtG
+        aws eks update-kubeconfig --name opsSchool-eks-AJKBMhtG
         kubectl apply -f deploy.yml
         """
     }
