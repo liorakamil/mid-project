@@ -5,7 +5,7 @@ node {
  }
  stage("build docker") {
     customImage = docker.build("liorakamil/mid-project")
-    withDockerRegistry(credentialsId: 'eb94b483-01ea-46c4-ad1a-747b29513365') {
+    withDockerRegistry(credentialsId: '949088b6-b85c-4b4f-a6cf-6557f0d6b783') {
         customImage.push()   
     }
  }
@@ -15,7 +15,7 @@ node {
  stage('Apply Kubernetes files') {
     withAWS(region: 'us-east-1', credentials: 'AWSK8S') {
         sh """
-        aws eks update-kubeconfig --name opsSchool-eks-rC0FPoaR
+        aws eks update-kubeconfig --name opsSchool-eks-qTHooZOH
         kubectl apply -f deploy.yml
         """
     }
