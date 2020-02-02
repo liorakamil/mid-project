@@ -1,7 +1,7 @@
+parameters {
+    string(name: 'EKS', description: 'EKS cluster name')
+}
 node {
-    parameters {
-        string(name: 'EKS', description: 'EKS cluster name')
-    }
     def customImage = ""
     stage("pull code") {
         checkout scm
