@@ -1,0 +1,13 @@
+git-server: 1.9
+blueocean: 1.22.0
+greenballs: 1.15
+ssh-credentials: 1.18.1
+pipeline: 2.12
+github: 2.5.8
+ssh-slaves: 1.31.0
+git: 4.1.1
+github: 1.29.5
+git-client: 3.1.1
+workflow-aggregator: 2.6
+SSH Slaves: 1.31.0
+Build Monitor View: 1.12
