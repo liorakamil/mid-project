@@ -29,7 +29,7 @@ node {
         spec:
         type: LoadBalancer
         ports:
-        - protocol: TCP
+        -   protocol: TCP
             port: 80
             targetPort: 5000
         selector:
