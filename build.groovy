@@ -20,7 +20,7 @@ node {
         aws eks update-kubeconfig --name eks-cluster-flask
         
         cat <<EOF | kubectl apply -f -
-apiVersion: v1      # for versions before 1.9.0 use apps/v1beta2
+apiVersion: v1
 kind: Service
 metadata:
   name: flask-service
@@ -43,7 +43,7 @@ spec:
   selector:
     matchLabels:
       app: flask
-  replicas: 2 # tells deployment to run 2 pods matching the template
+  replicas: 2
   template:
     metadata:
       labels:
