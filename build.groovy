@@ -27,7 +27,7 @@ metadata:
   labels:
     app: flask
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - protocol: TCP
     port: 80
