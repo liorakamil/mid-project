@@ -15,13 +15,13 @@ node {
   sh """
   docker_id=$(docker run -d -p 5000:5000 liorakamil/mid-project:${env.BUILD_ID})
   status_code=$(curl --write-out %{http_code} --silent --output /dev/null localhost:5000)
-  if [[ "$status_code" -ne 200 ]] ; then
-    echo "Docker failed with $status_code"
+  if [[ "\$status_code" -ne 200 ]] ; then
+    echo "Docker failed with \$status_code"
     exit 1
   else
     echo "Docker ok"
   fi
-  docker rm -f $docker_id
+  docker rm -f \$docker_id
   """
  }
  stage('Apply Kubernetes files') {
