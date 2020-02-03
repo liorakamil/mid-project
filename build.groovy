@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: liorakamil/mid-project:${env.BUILD_ID}
+        image: liorakamil/mid-project:38
         ports:
         - containerPort: 5000       
         EOF
