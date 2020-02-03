@@ -16,11 +16,11 @@ node {
  }
  stage('Apply Kubernetes files') {
     withAWS(region: 'us-east-1', credentials: 'AWSK8S') {
-        sh """
-        aws eks update-kubeconfig --name eks-cluster-flask
-        
-        cat <<EOF | kubectl apply -f -
-apiVersion: v1
+sh """
+aws eks update-kubeconfig --name eks-cluster-flask
+
+cat <<EOF | kubectl apply -f -
+apiVersion: v1      # for versions before 1.9.0 use apps/v1beta2
 kind: Service
 metadata:
   name: flask-service
@@ -43,7 +43,7 @@ spec:
   selector:
     matchLabels:
       app: flask
-  replicas: 2
+  replicas: 2 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
@@ -51,11 +51,11 @@ spec:
     spec:
       containers:
       - name: flask
-        image: liorakamil/mid-project:38
+        image: liorakamil/mid-project:${env.BUILD_ID}
         ports:
-        - containerPort: 5000       
-        EOF
-        """
+        - containerPort: 5000
+EOF
+"""
     }
   }
 }
